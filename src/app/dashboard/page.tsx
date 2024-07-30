@@ -1,20 +1,20 @@
-import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components"
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
-import { type Metadata } from "next"
-import { redirect } from "next/navigation"
+import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { type Metadata } from "next";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
-  title: "Teamigo | Dashboard"
-}
+  title: "Teamigo | Dashboard",
+};
 
 const Dashboard = async () => {
-  const { getUser, isAuthenticated } = getKindeServerSession()
+  const { getUser, isAuthenticated } = getKindeServerSession();
 
   if (!(await isAuthenticated())) {
-    redirect("/")
+    redirect("/api/auth/login");
   }
 
-  const user = await getUser()
+  const user = await getUser();
 
   return (
     <div>
@@ -24,9 +24,9 @@ const Dashboard = async () => {
       </h3>
       <LogoutLink>Log out</LogoutLink>
     </div>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;
 
-export const runtime = "edge"
+export const runtime = "edge";

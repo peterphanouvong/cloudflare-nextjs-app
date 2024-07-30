@@ -1,14 +1,7 @@
-"use client"
-
-import { redirect } from "next/navigation"
-import { useEffect } from "react"
+import { redirect } from "next/navigation";
 
 const Home = () => {
-  useEffect(() => {
-    redirect("/api/auth/login")
-  }, [])
+  redirect("/api/auth/login");
+};
 
-  return <></>
-}
-
-export default Home
+export default Home;
