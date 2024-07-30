@@ -11,7 +11,7 @@ const Dashboard = async () => {
   const { getUser, isAuthenticated } = getKindeServerSession();
 
   if (!(await isAuthenticated())) {
-    redirect("/");
+    redirect("/api/auth/login");
   }
 
   const user = await getUser();
